@@ -1,0 +1,25 @@
+{
+  "name": "parking-lot-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SanjaiSanjaiSanjai/Parking-Lot-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SanjaiSanjaiSanjai/Parking-Lot-System/issues"
+  },
+  "homepage": "https://github.com/SanjaiSanjaiSanjai/Parking-Lot-System#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}
