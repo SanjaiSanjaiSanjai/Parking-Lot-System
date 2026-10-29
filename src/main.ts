@@ -1,16 +1,38 @@
 import { SpotType, VehicleType } from "./constants/enum.js";
-import { ParkingSpot } from "./models/parking-spot.model.js";
+import { ParkingLot } from "./models/parking-lot.js";
+import { ParkingTicket } from "./models/parking-ticket.js";
 import { Vehicle } from "./models/vehicle.model.js";
 
-const bike = new Vehicle("TN49 2988",VehicleType.MOTORCYCLE);
-const spot1 = new ParkingSpot(1,SpotType.MOTORCYCLES_POT)
-const spot2 = new ParkingSpot(2,SpotType.COMPACT_SPOT)
-const spot3 = new ParkingSpot(3,SpotType.LARGE_SPOT)
-const spot4 = new ParkingSpot(4,SpotType.MOTORCYCLES_POT)
-spot1.storeParkingSpotVehicleDetail(bike);
+const parkingLot = new ParkingLot();
+const floor = parkingLot.createFloor(1, 4);
+parkingLot.createParkingService(101, 1);
 
-console.log(bike);
-console.log(spot1);
-console.log(spot2);
-console.log(spot3);
-console.log(spot4);
+floor.createParkingSpot(1, SpotType.MOTORCYCLES_SPOT);
+floor.createParkingSpot(2, SpotType.COMPACT_SPOT);
+floor.createParkingSpot(3, SpotType.LARGE_SPOT);
+floor.createParkingSpot(4, SpotType.LARGE_SPOT);
+
+const car = new Vehicle("TN-01-AB-1234", VehicleType.CAR);
+const truck = new Vehicle("TN-02-CD-5678", VehicleType.TRUCK);
+
+const carSpot = parkingLot.parkVehicle(car, 1);
+const truckSpot = parkingLot.parkVehicle(truck, 1);
+
+const carTicket = new ParkingTicket(1);
+carTicket.storeVechileDetailsTicket(car);
+carTicket.storeVehicleSpotTicket(carSpot);
+
+console.log("Car parked in spot:", carSpot.getSpotId());
+console.log("Truck parked in spot:", truckSpot.getSpotId());
+console.log(
+  "Available spots:",
+  parkingLot.getAvailabilitySpots().map((spot) => spot.getSpotId()),
+);
+
+parkingLot.unParkVehicle(carSpot, carTicket, 1);
+
+console.log("Car exit time:", carTicket.getExitTime());
+console.log(
+  "Available spots after car exit:",
+  parkingLot.getAvailabilitySpots().map((spot) => spot.getSpotId()),
+);

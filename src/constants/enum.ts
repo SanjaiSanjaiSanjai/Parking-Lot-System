@@ -5,7 +5,7 @@ export enum VehicleType {
 }
 
 export enum SpotType {
-    MOTORCYCLES_POT = "motorcycle spot",
+    MOTORCYCLES_SPOT = "motorcycle spot",
     COMPACT_SPOT = "compact spot",
     LARGE_SPOT = "large spot",
 }
